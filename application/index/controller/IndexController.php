@@ -6,6 +6,7 @@ class IndexController extends BaseController
 {
 
         public function index(){
+
                 return view('setmail');
         }
 
@@ -15,6 +16,7 @@ class IndexController extends BaseController
          * @author Frank
          */
         public function  setMail ($title = null, $desc_content = null, $to = null){
+
 
                 $title = 'test';
                 $desc_content = 'This is test email';

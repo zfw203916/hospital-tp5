@@ -6,8 +6,9 @@
  * Time: 1:03 PM
  */
 namespace app\index\controller;
+use traits\controller\Jump;
 use think\Controller;
-class BaseController  extends  Controller
+class BaseController extends Controller
 {
 
 }
