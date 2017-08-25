@@ -2,7 +2,7 @@
 namespace app\index\controller;
 use think\Loader;
 
-class Index extends Base
+class IndexController extends BaseController
 {
 
         public function index(){
