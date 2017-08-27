@@ -7,9 +7,6 @@
  */
 
 namespace app\hospital\model;
-
-
-use app\hospital\controller\HospitalController;
 use think\Model;
 
 class DoctorClass extends HospitalModel
