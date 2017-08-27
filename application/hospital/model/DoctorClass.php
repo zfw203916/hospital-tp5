@@ -14,5 +14,5 @@ use think\Model;
 
 class DoctorClass extends HospitalModel
 {
-
+    protected $table = 'doctor';
 }
