@@ -77,4 +77,28 @@ class IndexController extends HospitalController
     }
 
 
+    /**
+     * 员工信息注册验证
+     */
+    public function add_doctor_check(){
+        $work = trim(input('work'));
+        $name = trim(input('name'));
+        if (empty($work) || empty($name)) {
+            $this->error('工号或姓名不能为空！');
+        }
+        $data = [
+            'Dno'     => $work,
+            'Dname'   => $name,
+            'Dsex'    => input('sex'),
+            'Dzc'     => input('dzc'),
+            'lz_Aname'=> input('keshi'),
+            'Dstate'  => 1
+        ];
+        $status = Doctor::create($data);
+        // dump($status);exit;
+        $status ? $this->success('恭喜您，添加成功！','hospital') : $this->error('添加失败，请重试！');
+
+    }
+
+
 }
