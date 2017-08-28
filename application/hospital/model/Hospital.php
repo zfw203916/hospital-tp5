@@ -7,11 +7,9 @@
  */
 
 namespace app\hospital\model;
+use think\Model;
 
-
-use think\console\command\make\Model;
-
-class HospitalModel extends Model
+class Hospital extends Model
 {
 
 }
