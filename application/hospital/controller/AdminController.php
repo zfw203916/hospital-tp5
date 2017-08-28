@@ -25,4 +25,18 @@ class AdminController extends HospitalController
         ]);
         return view();
     }
+
+    // 注销登录
+    public function login_out()
+    {
+        session('Uname',null);
+        $this->success('注销成功！','index/login');
+    }
+
+    // 工作模块
+    public function work()
+    {
+        $this->assign(['title'=>'病房管理系统-工作模块']);
+        return view();
+    }
 }
