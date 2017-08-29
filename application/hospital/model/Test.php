@@ -11,7 +11,7 @@ use think\Model;
 
 class Test extends Hospital
 {
-    protected $table = 'test';
+    protected $table = 'Test';
 
     public function add(){
 

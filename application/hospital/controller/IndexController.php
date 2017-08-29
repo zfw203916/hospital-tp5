@@ -20,21 +20,22 @@ class IndexController extends HospitalController
     // 登录页面
     public function login()
     {
+
         $up = Test::get('20161004186');
         //var_dump($up["Uname"]);die;
-        if (session('?Uname')) $this->success('您已经登录过了，转往首页','admin/index');
+        if (session('?Uname')) $this->success('您已经登录过了，转往首页', 'admin/index');
         $this->assign([
                 'title'=>'病房管理系统-登录111',
                 'up'   => $up
             ]
 
         );
+
         return view();
     }
     // 登录验证
     public function login_check()
     {
-        //var_dump(session('Uname'));die;
         // 接收工号和密码
         $work = trim(input('work'));
         $password = trim(input('password'));

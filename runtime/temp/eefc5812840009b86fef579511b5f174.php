@@ -1,11 +1,11 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:81:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\admin\index.html";i:1504015610;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\header.html";i:1504017102;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\footer.html";i:1502704487;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:84:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\admin\hospital.html";i:1502704487;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\header.html";i:1504017102;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\footer.html";i:1502704487;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>病房管理系统-首页</title>
+    <title>病房管理系统-医院信息管理</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/main.css">
     <link rel="stylesheet" href="/static/hui.css">
@@ -26,9 +26,12 @@
         <div class="col-md-4"></div>
         <div class="col-md-4 hui-margin-top-30 hui-padding-all-20 hui-background-color-white">
 
-            <?php echo $fuck; ?>
-          <button class='btn btn-block btn-success' onclick="javascript:window.location.href='<?php echo url('work'); ?>'">点击此处进入工作模块</button>
-          <button class='btn btn-block btn-success' onclick="javascript:window.location.href='<?php echo url('charge_pwd'); ?>'">点击此处管理密码</button>
+
+          <button class='btn btn-block btn-success' onclick="javascript:window.location.href='<?php echo url('add_doctor'); ?>'">员工信息注册</button>
+
+          <button class='btn btn-block btn-success' onclick="javascript:window.location.href='<?php echo url('update_doctor'); ?>'">员工信息更新</button>
+
+          <button class='btn btn-block btn-danger' onclick="javascript:window.location.href='<?php echo url('del_doctor'); ?>'">员工信息删除</button>
 
   </div>
 <div class="col-md-4"></div>

@@ -1,11 +1,11 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:81:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\admin\index.html";i:1504015610;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\header.html";i:1504017102;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\footer.html";i:1502704487;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:86:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\admin\charge_pwd.html";i:1502704487;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\header.html";i:1504017102;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\footer.html";i:1502704487;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>病房管理系统-首页</title>
+    <title>病房管理系统-修改密码</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/main.css">
     <link rel="stylesheet" href="/static/hui.css">
@@ -26,9 +26,19 @@
         <div class="col-md-4"></div>
         <div class="col-md-4 hui-margin-top-30 hui-padding-all-20 hui-background-color-white">
 
-            <?php echo $fuck; ?>
-          <button class='btn btn-block btn-success' onclick="javascript:window.location.href='<?php echo url('work'); ?>'">点击此处进入工作模块</button>
-          <button class='btn btn-block btn-success' onclick="javascript:window.location.href='<?php echo url('charge_pwd'); ?>'">点击此处管理密码</button>
+
+          <form role="form" action="<?php echo url('charge_pwd_check'); ?>" method="post">
+            <div class="form-group">
+              <label for="zh">原密码：</label>
+              <input type="hidden" name="uname" class="form-control" value="<?php echo \think\Session::get('Uname'); ?>">
+              <input type="text" name="old_password" class="form-control" id="zh" placeholder="原密码">
+            </div>
+            <div class="form-group">
+              <label for="mm">新密码</label>
+              <input type="password" name="new_password" class="form-control" id="mm" placeholder="新密码">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">确认修改</button>
+          </form>
 
   </div>
 <div class="col-md-4"></div>
