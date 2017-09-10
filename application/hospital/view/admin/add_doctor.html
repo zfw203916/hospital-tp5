@@ -28,11 +28,12 @@
               </select>
           </div>
           <div class="form-group">
+              <?php var_dump($ato[0]);?>
             <label for="mm">所属科室：</label>
             <select class="form-control" name="keshi">
-            {volist name="ato" id="vo"}
-              <option value='{$vo.Aname}'>{$vo.Aname}</option>
-            {/volist}
+                {volist name="ato" id="vo"}
+                    <option value='{$vo.Aname}'>{$vo.Aname}</option>
+                {/volist}
               </select>
           </div>
 

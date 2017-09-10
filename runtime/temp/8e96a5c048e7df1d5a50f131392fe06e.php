@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:81:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\admin\index.html";i:1504015610;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\header.html";i:1504017102;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\footer.html";i:1502704487;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:81:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\admin\index.html";i:1504015610;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\header.html";i:1504705169;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\footer.html";i:1502704487;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -19,7 +19,12 @@
       <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 header">
-          工号<?php echo \think\Session::get('Uname'); ?>，您现在的位置是：<?php echo $title; ?> <span class="pull-right hui-font-color-alizarin hui-margin-left-15" onclick="location.href='<?php echo url('admin/login_out'); ?>'" style="cursor:pointer;"> 注销登录 </span> <span class="pull-right" onclick="location.href='<?php echo url('index'); ?>'" style="cursor:pointer;"> 返回首页 </span>
+          工号<?php echo \think\Session::get('Uname'); ?>，您现在的位置是：<?php echo $title; ?>
+          <span class="pull-right hui-font-color-alizarin hui-margin-left-15"
+                onclick="location.href='<?php echo url('admin/login_out'); ?>'"
+                style="cursor:pointer;"> 注销登录
+          </span>
+          <span class="pull-right" onclick="location.href='<?php echo url('index'); ?>'" style="cursor:pointer;"> 返回首页 </span>
         </div>
       </div>
         <div class="row">

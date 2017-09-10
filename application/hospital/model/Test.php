@@ -13,8 +13,5 @@ class Test extends Hospital
 {
     protected $table = 'Test';
 
-    public function add(){
-
-    }
 
 }

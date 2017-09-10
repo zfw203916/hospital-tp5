@@ -9,7 +9,7 @@
 namespace app\hospital\model;
 use think\Model;
 
-class DoctorClass extends HospitalModel
+class Doctor extends Hospital
 {
     protected $table = 'doctor';
 }

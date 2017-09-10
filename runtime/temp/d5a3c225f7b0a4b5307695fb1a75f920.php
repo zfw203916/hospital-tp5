@@ -1,11 +1,11 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:86:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\admin\charge_pwd.html";i:1502704487;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\header.html";i:1504705169;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\footer.html";i:1502704487;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:86:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\admin\del_doctor.html";i:1502704487;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\header.html";i:1504705169;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\footer.html";i:1502704487;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>病房管理系统-修改密码</title>
+    <title></title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/main.css">
     <link rel="stylesheet" href="/static/hui.css">
@@ -32,17 +32,17 @@
         <div class="col-md-4 hui-margin-top-30 hui-padding-all-20 hui-background-color-white">
 
 
-          <form role="form" action="<?php echo url('charge_pwd_check'); ?>" method="post">
+          <form role="form" action="<?php echo url('del_doctor_check'); ?>" method="post">
             <div class="form-group">
-              <label for="zh">原密码：</label>
-              <input type="hidden" name="uname" class="form-control" value="<?php echo \think\Session::get('Uname'); ?>">
-              <input type="text" name="old_password" class="form-control" id="zh" placeholder="原密码">
+              <label for="mm">工号：</label>
+              <select class="form-control" name="dno">
+                <?php if(is_array($doctor) || $doctor instanceof \think\Collection || $doctor instanceof \think\Paginator): $i = 0; $__LIST__ = $doctor;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                  <option value='<?php echo $vo['Dno']; ?>'><?php echo $vo['Dno']; ?>.<?php echo $vo['Dname']; ?>.<?php echo $vo['lz_Aname']; ?></option>
+                <?php endforeach; endif; else: echo "" ;endif; ?>
+                </select>
             </div>
-            <div class="form-group">
-              <label for="mm">新密码</label>
-              <input type="password" name="new_password" class="form-control" id="mm" placeholder="新密码">
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">确认修改</button>
+
+            <button type="submit" class="btn btn-danger btn-block">确认删除</button>
           </form>
 
   </div>
