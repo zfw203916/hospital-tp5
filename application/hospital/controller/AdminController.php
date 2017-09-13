@@ -13,7 +13,7 @@ use app\hospital\model\test;
 use app\hospital\model\Ato;
 use app\hospital\model\Bed;
 use app\hospital\model\Doctor;
-use app\index\model\Patient;
+use app\hospital\model\Patient;
 
 class AdminController extends HospitalController
 {
@@ -245,7 +245,6 @@ class AdminController extends HospitalController
         $this->assign('list', $list);
         $this->assign('count', cstount($list));
         return $this->fetch();
-
     }
 
     /*
@@ -256,18 +255,156 @@ class AdminController extends HospitalController
         return view();
     }
 
+
+    /**
+     * 病人信息注册
+     * @return \think\response\View
+     */
     public function add_patient(){
 
+        $doctordata = new Doctor();
+        $doctordata
+            ->where('Dstate',1)
+            ->where('Dzc','医生')
+            ->whereOr('Dzc','科主任')
+            ->select();
+        /**
+         * 2 种方式。
+         */
+
+        $doctor = Doctor::all(['Dstate'=>1]);
+        $bed = Bed::all();
         $data = [
             'title'=>'病人信息注册',
-            'doctor'=>1,
-            'bed'=>2
+            'doctor'=>$doctor,
+            'bed'=>$bed,
         ];
         $this->assign($data);
         return view();
     }
 
 
+    /**
+     * 病人信息注册
+     */
+    public function add_patient_check(){
+        $data = array(
+            'Pno'=> input('pno'),
+            'Pname'=>input('name'),
+            'Psex'=>input('sex'),
+            'Pbirth'=>input('birth'),
+            'Padd'=>input('address'),
+            'Ptele'=>input('tel'),
+            'Cno'=>input('cno'),
+            'Idate'=>input('idate'),
+            'Pmark'=>input('mark'),
+            'Odate'=>input('Odate')
+        );
+
+        //other array method
+        $dataOther = [
+            'Pno'=> input('pno'),
+            'Pname'=>input('name'),
+            'Psex'=>input('sex'),
+            'Pbirth'=>input('birth'),
+            'Padd'=>input('address'),
+            'Ptele'=>input('tel'),
+            'Cno'=>input('cno'),
+            'Idate'=>input('idate'),
+            'Pmark'=>input('mark'),
+            'Odate'=>input('Odate')
+        ];
+
+        $statues = Patient::create($data);
+        $statues ? $this->success('注册成功','patient'):$this->error('注册失败');
+
+    }
+
+    /**
+     * @return \think\response\View
+     *病人信息更新
+     */
+    public function update_patient(){
+        $patient = Patient::all(['Odate'=>'00000000']);
+        $this->assign([
+            'title'  => '病历信息更新',
+            'patient'=> $patient
+        ]);
+        return view();
+    }
+    /**
+     * @return \think\response\View
+     *病人信息更新
+     */
+    public function update_patient_check(){
+            $data = array(
+                'Pmark' =>input('mark'),
+            );
+        (Patient::get(input('pno'))->save($data)) ? $this->success('恭喜您，修改成功！','patient') : $this->error('修改失败，请重试！');
+        //$statues = Patient::update($data,$data);
+        //$statues ? $this->success("更新成功"):$this->error("更新失败");
+    }
+
+    /**
+     * @return \think\response\View
+     * 出院手续办理
+     */
+    public function out_patient(){
+        $patient = Patient::all(['Odate'=>'00000000']);
+        $data = array(
+            'title' => '出院手续办理',
+            'patient'=>$patient
+
+        );
+        $this->assign($data);
+        return view();
+    }
+
+    /**
+     * 出院手续办理
+     */
+    public function out_patient_check(){
+        $data = [
+            'Pno'=>input('pno'),
+            'Odate'=>input('odate')
+        ];
+        (Patient::update($data))?$this->success('更新成功','patient'):$this->error("更新失败");
+    }
+
+
+    /**
+     * 病人信息删除
+     */
+    public function del_patient(){
+        $patient = Patient::all(['Dstate'=>1]);
+        $this->assign(
+            [
+                'title'=>'病人信息删除',
+                'patient'=>$patient
+            ]
+        );
+        return view();
+    }
+
+    /**
+     * 病人信息删除验证
+     */
+    public function del_patient_check(){
+        /**
+        $status = Patient::destroy(['Pno'=>input('pno')]);
+        $status ? $this->success('成功删除','patient'):$this->error("删除失败");
+         **/
+
+        /**
+         *  (Patient::destroy(input('pno')) == 1) ? $this->success('恭喜您，删除成功！','patient') : $this->error('操作失败，请重试！');
+         */
+
+        /**
+         * 我的思路是不做物理删除，直接留住数据。
+         */
+        $status = Patient::update(['Dstate'=>-1],array('Pno'=>input('pno')));
+        $status ? $this->success('成功删除','patient'):$this->error("删除失败");
+    }
     /*
     * ---------------------------------------------以下是信息查询部分----------------------------------------------------------------------------------
     */
@@ -279,4 +416,30 @@ class AdminController extends HospitalController
         return view();
     }
 
+    /**
+     * @return \think\response\View
+     * 科室信息查询
+     */
+    public function search_keshi(){
+        $this->assign([
+            'title'=>'科室信息查询',
+            'ato'=>Ato::all()
+        ]);
+        return view();
+    }
+
+    /**
+     * 科室信息查询
+     * 执行的时候出现：类的属性不存在:app\hospital\model\Ato->lz_Aname
+     * 我喜欢看到错误，有错误的和不会的地方，才是我想要研究的东西。
+     */
+    public function search_keshi_view(){
+        $ato = Ato::all(['Aname'=>input('aname')]);
+        $data = [
+            'title'=>'科室信息查询',
+            'ato'=>$ato
+        ];
+        $this->assign($data);
+        return view();
+    }
 }

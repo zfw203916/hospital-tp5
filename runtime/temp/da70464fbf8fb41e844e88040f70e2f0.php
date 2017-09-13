@@ -1,11 +1,11 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:87:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\admin\add_patient.html";i:1502704487;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\header.html";i:1504705169;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\footer.html";i:1502704487;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:87:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\admin\add_patient.html";i:1505061695;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\header.html";i:1504705169;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\footer.html";i:1502704487;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <title>病人信息注册</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/main.css">
     <link rel="stylesheet" href="/static/hui.css">
@@ -51,7 +51,7 @@
           </div>
           <div class="form-group">
             <label for="zh">出生日期：</label>
-            <input type="text" name="birthday" class="form-control" placeholder="格式：1993-10-22">
+            <input type="text" name="birth" class="form-control" placeholder="格式：1993-10-22">
           </div>
           <div class="form-group">
             <label for="zh">家庭住址：</label>

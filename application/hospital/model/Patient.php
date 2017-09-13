@@ -9,7 +9,7 @@
 namespace app\hospital\model;
 
 
-class Patient
+class Patient extends Hospital
 {
-
+    protected $tables = 'patient';
 }
