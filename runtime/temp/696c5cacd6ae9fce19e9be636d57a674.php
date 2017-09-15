@@ -1,12 +1,12 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:93:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\admin\search_keshi_view.html";i:1505402786;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\header.html";i:1504705169;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\footer.html";i:1502704487;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:95:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\admin\search_patient_view.html";i:1505498152;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\header.html";i:1505490973;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\footer.html";i:1502704487;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>科室信息查询</title>
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>病例信息查询</title>
+    <link rel="stylesheet" href="/static//bootstrap-3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/main.css">
     <link rel="stylesheet" href="/static/hui.css">
     <style type="text/css">
@@ -33,17 +33,33 @@
 
 <table class="table table-bordered">
     <tr class="info">
-      <td>科室名称</td>
-      <td>值班电话</td>
+      <td>住院号</td>
       <td>姓名</td>
-      <td>职称</td>
-      <td>工号</td>
-      <td>工作状态</td>
+      <td>性别</td>
+      <td>出生年月</td>
+      <td>家庭住址</td>
+      <td>联系电话</td>
+      <td>床位号</td>
+      <td>主治医生</td>
+      <td>所属科室</td>
+      <td>住院日期</td>
+      <td>治疗备注</td>
+      <td>出院日期</td>
     </tr>
-    <?php if(is_array($ato) || $ato instanceof \think\Collection || $ato instanceof \think\Paginator): $i = 0; $__LIST__ = $ato;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+    <?php if(is_array($patient) || $patient instanceof \think\Collection || $patient instanceof \think\Paginator): $i = 0; $__LIST__ = $patient;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
     <tr>
-      <td><?php echo $vo['Aname']; ?></td>
-      <td><?php echo $vo['Atele']; ?></td>
+      <td><?php echo $vo['Pno']; ?></td>
+      <td><?php echo $vo['Pname']; ?></td>
+      <td><?php echo $vo['Psex']; ?></td>
+      <td><?php echo $vo['Pbirth']; ?></td>
+      <td><?php echo $vo['Padd']; ?></td>
+      <td><?php echo $vo['Ptele']; ?></td>
+      <td><?php echo $vo['Cno']; ?></td>
+      <td><?php echo $vo['Dno']; ?></td>
+      <td><?php echo $vo['lz_Aname']; ?></td>
+      <td><?php echo $vo['Idate']; ?></td>
+      <td><?php echo $vo['Pmark']; ?></td>
+      <td><?php echo $vo['Odate']; ?></td>
     </tr>
     <?php endforeach; endif; else: echo "" ;endif; ?>
   </table>

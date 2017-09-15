@@ -432,14 +432,119 @@ class AdminController extends HospitalController
      * 科室信息查询
      * 执行的时候出现：类的属性不存在:app\hospital\model\Ato->lz_Aname
      * 我喜欢看到错误，有错误的和不会的地方，才是我想要研究的东西。
+     * 查明数据库没这个字段。
      */
     public function search_keshi_view(){
         $ato = Ato::all(['Aname'=>input('aname')]);
+        /*
+         $ato = Db::name('kesearch')
+            ->where('lz_Aname',input('aname'))
+            ->select();
+        */
+        //var_dump($ato);die;
         $data = [
-            'title'=>'科室信息查询',
+            'title'=>'科室信息查询--'.input('aname'),
             'ato'=>$ato
         ];
         $this->assign($data);
+        return view();
+    }
+
+    /**
+     * 医护信息查询。
+     *
+     */
+    public function search_doctor(){
+        $doctor = Doctor::all();
+        $this->assign( [
+            'title'=> '医护信息查询',
+            'doctor'=>$doctor
+        ]);
+         return view();
+    }
+
+    /**
+     * 医护信息查询。
+     *
+     */
+    public function search_doctor_view(){
+        $doctor = Db::name('Doctorsearch')
+            ->where('Dno',input('dno'))
+            ->select();
+        //echo Db::name('Doctorsearch')->getLastSql();die;
+        //$doctor = Doctor::all(['Dno'=>input('D')]);
+        //var_dump($doctor);die;
+        if(empty($doctor)){
+            $this->error('查询出现错误，请重试');
+        }
+        $this->assign([
+            'title'=>'医护信息查询-'.input('dno'),
+            'doctor'=>$doctor
+        ]);
+
+         return view();
+
+    }
+
+    /**
+     * 床位信息查询
+     */
+    public function search_bed(){
+        $this->assign([
+            'title'=>'床位信息查询'
+        ]);
+        return view();
+    }
+
+    /**
+     * 空床位信息查询
+     */
+    public function search_bed_null(){
+        $bed = Bed::all(['cuse'=>0]);
+        $this->assign([
+            'title'=>'空床位信息查询',
+            'bed'=>$bed
+        ]);
+        return view();
+    }
+
+    /**
+     * 非空床位信息查询
+     */
+
+    public function search_bed_fill(){
+      $bed = Bed::all(['cuse'=>1]);
+      $this->assign([
+          'title'=>'非空床位信息查询',
+          'bed'=>$bed
+      ]);
+      return view();
+  }
+
+    /**
+     * 病例信息查询
+     */
+    public function search_patient(){
+        $patient = Patient::all();
+        $this->assign([
+            'title' => '病例信息查询',
+            'patient'=> $patient
+        ]);
+        return view();
+    }
+    /**
+     * 病例信息查询
+     */
+    public function search_patient_view(){
+        //$patient = Patient::all(['Pno'=>input('pno')]);
+        $patient = Db::name('patientsearch')
+            ->where('Pno',input('pno'))
+            ->select();
+        if(empty($patient)) $this->error("查询出现错误，请重试");
+        $this->assign([
+            'title'=>'病例信息查询',
+            'patient'=>$patient
+        ]);
         return view();
     }
 }

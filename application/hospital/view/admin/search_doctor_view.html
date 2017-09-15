@@ -15,9 +15,16 @@
       <td>{$vo.Dname}</td>
       <td>{$vo.Dsex}</td>
       <td>{$vo.Dzc}</td>
-      <td>{$vo.lz_Aname}</td>
-      <td>{$vo.Dstate}</td>
-      <td>{$vo.Pname}</td>
+      <td>
+          {$vo.lz_Aname}
+      </td>
+      <td>
+          {$vo.Dstate}
+          {switch name="$vo.Dstate"}
+          {case value="1"}在岗{/case}
+          {default /}不在岗
+          {/switch}
+      </td>
     </tr>
     {/volist}
   </table>

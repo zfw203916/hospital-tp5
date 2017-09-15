@@ -8,7 +8,13 @@
     {volist name="bed" id="vo"}
     <tr>
       <td>{$vo.Cno}</td>
-      <td>{$vo.Cuse}</td>
+      <td>
+          {$vo.Cuse}
+          {switch name='$vo.Cuse'}
+            {case value='0}未使用{/case}
+            {default/}使用中
+          {/switch}
+      </td>
       <td>{$vo.bc_Aname}</td>
     </tr>
     {/volist}

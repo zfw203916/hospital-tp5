@@ -1,11 +1,11 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:80:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\admin\work.html";i:1502704487;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\header.html";i:1505490973;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\footer.html";i:1502704487;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:94:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\admin\search_doctor_view.html";i:1505495754;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\header.html";i:1505490973;s:83:"D:\phpStudy\WWW\hospital-tp5\public/../application/hospital\view\common\footer.html";i:1502704487;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>病房管理系统-工作模块</title>
+    <title>医护信息查询-20131004321</title>
     <link rel="stylesheet" href="/static//bootstrap-3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/main.css">
     <link rel="stylesheet" href="/static/hui.css">
@@ -31,14 +31,33 @@
         <div class="col-md-4"></div>
         <div class="col-md-4 hui-margin-top-30 hui-padding-all-20 hui-background-color-white">
 
-
-          <button class='btn btn-block btn-success' onclick="javascript:window.location.href='<?php echo url('hospital'); ?>'">医院信息管理</button>
-
-          <button class='btn btn-block btn-success' onclick="javascript:window.location.href='<?php echo url('patient'); ?>'">病人信息管理</button>
-
-          <button class='btn btn-block btn-success' onclick="javascript:window.location.href='<?php echo url('search'); ?>'">信息查询服务</button>
-
-  </div>
+<table class="table table-bordered">
+    <tr class="info">
+      <td>工号</td>
+      <td>姓名</td>
+      <td>性别</td>
+      <td>职称</td>
+      <td>所属科室</td>
+      <td>工作状态</td>
+      <td>主治病人</td>
+    </tr>
+    <?php if(is_array($doctor) || $doctor instanceof \think\Collection || $doctor instanceof \think\Paginator): $i = 0; $__LIST__ = $doctor;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+    <tr>
+      <td><?php echo $vo['Dno']; ?></td>
+      <td><?php echo $vo['Dname']; ?></td>
+      <td><?php echo $vo['Dsex']; ?></td>
+      <td><?php echo $vo['Dzc']; ?></td>
+      <td>
+          <?php echo $vo['lz_Aname']; ?>
+      </td>
+      <td>
+          <?php echo $vo['Dstate']; switch($vo['Dstate']): case "1": ?>在岗<?php break; default: ?>不在岗
+          <?php endswitch; ?>
+      </td>
+    </tr>
+    <?php endforeach; endif; else: echo "" ;endif; ?>
+  </table>
+</div>
 <div class="col-md-4"></div>
 </div>
 </div>
