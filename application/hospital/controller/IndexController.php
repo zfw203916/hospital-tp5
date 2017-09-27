@@ -22,6 +22,7 @@ class IndexController extends HospitalController
     {
 
         $up = Test::get('20161004186');
+		//$up = Test::get(['id'=>['=',20161004186]]);
         //var_dump($up["Uname"]);die;
         if (session('?Uname')) $this->success('您已经登录过了，转往首页', 'admin/index');
         $this->assign([
