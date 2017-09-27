@@ -6,6 +6,5 @@
  * Time: 6:54 PM
  */
 return [
-    // ¿ØÖÆÆ÷Ààºó×º
-    'controller_suffix'      => true,
+
 ];
